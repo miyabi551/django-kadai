@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薬投与指示確認</title>
+</head>
+<body>
+    <h1>薬投与指示確認</h1>
+
+    <!-- 処置確認画面 -->
+    <form action="/syoti_kakutei/" method="post">
+        {% csrf_token %}
+        <div id="medications_confirmation">
+            {% for medication in medications %}
+                <div>
+                    <p>薬剤ID: {{ medication.kanzyamedid }}</p>
+                    <p>薬剤名: {{ medication.kanzyamedname }}</p>
+                    <p>数量: {{ medication.medcount }}</p>
+                    <input type="hidden" name="kanzyamedid[]" value="{{ medication.kanzyamedid }}">
+                    <input type="hidden" name="kanzyamedname[]" value="{{ medication.kanzyamedname }}">
+                    <input type="hidden" name="medcount[]" value="{{ medication.medcount }}">
+                </div>
+            {% endfor %}
+        </div>
+        <!-- 処置確定、薬剤選択画面へ戻るボタン -->
+        <input type="submit" name="action" value="処置確定">
+        <button type="submit" name="action" value="薬剤選択画面へ戻る">薬剤選択画面へ戻る</button>
+    </form>
+</body>
+</html>

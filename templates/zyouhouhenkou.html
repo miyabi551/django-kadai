@@ -1,0 +1,40 @@
+<!-- zyouhouhenkou.html -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード変更機能</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>パスワード変更</h1>
+
+    <!-- 従業員用パスワード変更 -->
+    <div id="employeeSection">
+        <h2>従業員用パスワード変更</h2>
+        <form id="employeePasswordChangeForm">
+            <label for="empid">従業員ID:</label>
+            <input type="text" id="empid" name="empid" required><br><br>
+
+            <label for="emppasswd">新しいパスワード:</label>
+            <input type="password" id="emppasswd" name="emppasswd" required><br><br>
+
+            <label for="emppasswd">パスワード確認:</label>
+            <input type="password" id="emppasswd" name="emppasswd" required><br><br>
+
+            <button type="button" onclick="changePassword()">変更</button>
+            <p id="employeeErrorMessage" class="error"></p>
+        </form>
+    </div>
+
+
+
+ <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
+</body>
+</html>

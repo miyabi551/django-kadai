@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保険証変更確認</title>
+</head>
+<body>
+    <h1>保険証変更確認</h1>
+    <form method="post" action="{% url 'kanzyakanri' %}">
+        {% csrf_token %}
+        <input type="hidden" name="patid" value="{{ patient.patid }}">
+        
+        <label for="current_hokenmei">現在の保険証記号番号:</label>
+        <input type="text" id="current_hokenmei" name="current_hokenmei" value="{{ patient.hokenmei }}" readonly><br><br>
+        
+        <label for="hokenmei">新しい保険証記号番号:</label>
+        <input type="text" id="hokenmei" name="hokenmei" placeholder="新しい保険証記号番号を入力してください" required><br><br>
+        
+        <label for="current_hokenexp">現在の有効期限:</label>
+        <input type="text" id="current_hokenexp" name="current_hokenexp" value="{{ patient.hokenexp }}" readonly><br><br>
+        
+        <label for="hokenexp">新しい有効期限:</label>
+        <input type="date" id="hokenexp" name="hokenexp" required><br><br>
+        
+        <button type="submit" name="action" value="confirm">変更確認</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>従業員登録</title>
+</head>
+<body>
+    <h1>従業員登録</h1>
+    <form  action="{% url 'tourokukinou' %}" method="post">
+        {% csrf_token %}
+        <br>
+        <label for="user_id">ユーザーID:</label>
+        <input type="text" id="user_id" name="user_id" required><br>
+        <br>
+        <label for="first_name">名:</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+        <br>
+        <label for="last_name">姓:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+        <br>
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" name="password" required><br>
+        <br>
+        <label for="confirm_password">パスワード確認:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+        <br>
+        <label for="role">役割:</label>
+        <select id="role" name="role" required>
+            <option value="1">管理者</option>
+            <option value="2">受付</option>
+            <option value="3">医者</option>
+        </select><br>
+        <input type="hidden" name="action" value="register">
+        <br>
+        <button type="submit">登録確認</button>
+    </form>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+</body>
+</html>

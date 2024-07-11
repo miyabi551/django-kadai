@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薬投与指示</title>
+</head>
+<body>
+    <h1>薬投与指示</h1>
+
+    <!-- 処置画面 -->
+    <form id="medicationForm" action="{% url 'kusuri_tuika' %}" method="post">
+        {% csrf_token %}
+        <!-- 患者ID入力フィールド -->
+        <div>
+            <label for="patid">患者ID:</label>
+            <input type="text" id="patid" name="patid" value="{{ request.GET.patid }}" required readonly>
+        </div>
+        <!-- 患者姓フィールド -->
+        <div>
+            <label for="patient_fname">患者姓:</label>
+            <input type="text" id="patient_fname" name="patient_fname" value="{{ request.GET.patfname }}" required readonly>
+        </div>
+        <!-- 患者名フィールド -->
+        <div>
+            <label for="patient_lname">患者名:</label>
+            <input type="text" id="patient_lname" name="patient_lname" value="{{ request.GET.patlname }}" required readonly>
+        </div>
+        <!-- 患者保険証記号番号 -->
+        <div>
+            <label for="kanzyahokenmei">保険証記号番号:</label>
+            <input type="text" id="kanzyahokenmei" name="kanzyahokenmei" value="{{ request.GET.hokenmei }}" required readonly>
+        </div>
+        <!-- 患者保険証有効期限 -->
+        <div>
+            <label for="kanzyahokenexp">保険証有効期限:</label>
+            <input type="date" id="kanzyahokenexp" name="kanzyahokenexp" value="{{ request.GET.hokenexp }}" required readonly>
+        </div>
+        <br>
+        <br>
+        <!-- 初期の薬剤入力フィールド -->
+        <div id="medications">
+            <div>
+                <label for="kanzyamedname_1">薬剤名:</label>
+                <input type="text" id="kanzyamedname_1" name="kanzyamednames[]" required>
+                <label for="medunit_1">数量:</label>
+                <input type="number" id="medunit_1" name="medunits[]" required>
+                <button type="button" onclick="removeMedication(this)">削除</button>
+            </div>
+        </div>
+        <!-- 薬剤追加ボタン -->
+        <button type="button" onclick="addMedication()">薬剤の追加</button><br><br>
+        <!-- 処置確認、薬剤選択画面へ戻るボタン -->
+        <input type="submit" name="action" value="処置確認">
+        <button type="button" onclick="window.location.href='{% url 'isya_login' %}'">メニューに戻る</button>
+    </form>
+
+    <script>
+        // フォームに新しい薬剤入力欄を追加する関数
+        function addMedication() {
+            var medicationsDiv = document.getElementById("medications");
+            var count = medicationsDiv.children.length + 1;
+
+            var div = document.createElement("div");
+            div.innerHTML = `
+                <label for="kanzyamedname_${count}">薬剤名:</label>
+                <input type="text" id="kanzyamedname_${count}" name="kanzyamednames[]" required>
+                <label for="medunit_${count}">数量:</label>
+                <input type="number" id="medunit_${count}" name="medunits[]" required>
+                <button type="button" onclick="removeMedication(this)">削除</button>
+            `;
+            medicationsDiv.appendChild(div);
+        }
+
+        // 入力欄を削除する関数
+        function removeMedication(button) {
+            button.parentNode.remove();
+        }
+    </script>
+</body>
+</html>

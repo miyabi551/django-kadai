@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>患者登録機能</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>患者登録</h1>
+
+    <!-- 患者登録画面 -->
+    <div id="registrationSection" class="{% if confirmation %}hidden{% endif %}">
+        <form id="registrationForm" method="post" action="{% url 'kanzyatouroku' %}">
+            {% csrf_token %}
+            <label for="patid">患者ID:</label>
+            <input type="text" id="patid" name="patid" required value="{{ patid }}"><br><br>
+
+            <label for="patfname">患者姓:</label>
+            <input type="text" id="patfname" name="patfname" required value="{{ patfname }}"><br><br>
+
+            <label for="patlname">患者名:</label>
+            <input type="text" id="patlname" name="patlname" required value="{{ patlname }}"><br><br>
+
+            <label for="hokenmei">保険証記号番号:</label>
+            <input type="text" id="hokenmei" name="hokenmei" required value="{{ hokenmei }}"><br><br>
+
+            <label for="hokenexp">有効期限:</label>
+            <input type="date" id="hokenexp" name="hokenexp" required value="{{ hokenexp }}"><br><br>
+
+            <button type="submit" name="action" value="confirm">登録確認</button>
+            <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
+        </form>
+    </div>
+
+    <!-- 登録確認画面 -->
+    <div id="confirmationSection" class="{% if not confirmation %}hidden{% endif %}">
+        <h2>登録確認</h2>
+        <p>以下の情報で登録しますか？</p>
+        <ul>
+            <li>患者ID: {{ patid }}</li>
+            <li>患者姓: {{ patfname }}</li>
+            <li>患者名: {{ patlname }}</li>
+            <li>保険証記号番号: {{ hokenmei }}</li>
+            <li>有効期限: {{ hokenexp }}</li>
+        </ul>
+        <form method="post" action="{% url 'kanzyatouroku' %}">
+            {% csrf_token %}
+            <input type="hidden" name="patid" value="{{ patid }}">
+            <input type="hidden" name="patfname" value="{{ patfname }}">
+            <input type="hidden" name="patlname" value="{{ patlname }}">
+            <input type="hidden" name="hokenmei" value="{{ hokenmei }}">
+            <input type="hidden" name="hokenexp" value="{{ hokenexp }}">
+            <button type="submit" name="action" value="submit">登録</button>
+        </form>
+        <form method="get" action="{% url 'kanzyatouroku' %}">
+            <button type="submit">修正</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>従業員名前変更</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>従業員名前変更フォーム</h1>
+
+    <div id="errorMessages" class="error"></div>
+
+    <form id="updateForm">
+        <label for="empid">従業員ID:</label><br>
+        <input type="text" id="empid" name="empid"><br><br>
+        <label for="empfname">新しい名:</label><br>
+        <input type="text" id="empfname" name="empfname"><br><br>
+        <label for="emplname">新しい姓:</label><br>
+        <input type="text" id="emplname" name="emplname"><br><br>
+        <input type="submit" value="名前変更">
+    </form>
+  <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+</body>
+</html>

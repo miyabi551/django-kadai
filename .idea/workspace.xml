@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5f2cb208-60ba-4739-8452-278441d064fb" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/djangoProject1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangoProject1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangoProject1/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangoProject1/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangoProject1/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/djangoProject1/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kadai1/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/kadai1/views.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2gONgNlkhrrEFik0kyamCbYlhqV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.djangoProject1.executor&quot;: &quot;Run&quot;,
+    &quot;Django サーバー.djangoProject1.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.confirm_hospital.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.error.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.hokensyokensaku.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.insurance_change_success.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kanzyakensaku.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kanzyatouroku.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kanzyatouroku2.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kusuri_tuika.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.search_patient_form.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.syoti_kakutei.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.zyuusyokensaku.html.executor&quot;: &quot;Run&quot;,
+    &quot;Python.0009_alter_patient_expiry_date_alter_patient_first_name_and_more.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/211054/PycharmProjects/djangoProject1/kadai1/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\kadai1\templates" />
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\kadai1\templates" />
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\kadai1\templates\従業員管理機能" />
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\kadai1\templates\他病院向け機能" />
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\kadai1" />
+      <recent name="C:\Users\211054\PycharmProjects\djangoProject1\djangoProject1" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Grunt" flag="true" />
+      <visibility group="Gulp" flag="true" />
+      <visibility group="HTTP リクエスト" flag="true" />
+      <visibility group="Node.js" flag="true" />
+      <visibility group="Run Python file" flag="true" />
+      <visibility group="Run conda command" flag="true" />
+      <visibility group="Run pip command" flag="true" />
+      <visibility group="npm" flag="true" />
+      <visibility group="yarn" flag="true" />
+      <visibility group="実行構成" flag="true" />
+      <visibility group="最近のプロジェクト" flag="true" />
+    </myKeys>
+  </component>
+  <component name="RunManager" selected="Django サーバー.djangoProject1">
+    <configuration name="insurance_change_success.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/insurance_change_success.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="kanzyatouroku.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kanzyatouroku.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="kusuri_tuika.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kusuri_tuika.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="search_patient_form.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/search_patient_form.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="syoti_kakutei.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/syoti_kakutei.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="djangoProject1" type="Python.DjangoServer" factoryName="Django server">
+      <module name="djangoProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="djangoProject1.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript デバッグ.kusuri_tuika.html" />
+        <item itemvalue="JavaScript デバッグ.syoti_kakutei.html" />
+        <item itemvalue="JavaScript デバッグ.search_patient_form.html" />
+        <item itemvalue="JavaScript デバッグ.insurance_change_success.html" />
+        <item itemvalue="JavaScript デバッグ.kanzyatouroku.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f2cb208-60ba-4739-8452-278441d064fb" name="Changes" comment="" />
+      <created>1715564774100</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715564774100</updated>
+      <workItem from="1715564775501" duration="1662000" />
+      <workItem from="1715651520679" duration="2213000" />
+      <workItem from="1715751011355" duration="1166000" />
+      <workItem from="1715905127021" duration="1917000" />
+      <workItem from="1716166458521" duration="2885000" />
+      <workItem from="1716170443350" duration="359000" />
+      <workItem from="1716351142760" duration="601000" />
+      <workItem from="1716425395575" duration="263000" />
+      <workItem from="1716427338963" duration="1179000" />
+      <workItem from="1716429375615" duration="76000" />
+      <workItem from="1716429471866" duration="979000" />
+      <workItem from="1716430497261" duration="3124000" />
+      <workItem from="1716434344783" duration="812000" />
+      <workItem from="1716435253523" duration="208000" />
+      <workItem from="1716865968350" duration="132000" />
+      <workItem from="1716866119235" duration="36000" />
+      <workItem from="1716866174291" duration="5943000" />
+      <workItem from="1716957079350" duration="5338000" />
+      <workItem from="1717114421675" duration="6360000" />
+      <workItem from="1717121137712" duration="2937000" />
+      <workItem from="1717373446805" duration="44070000" />
+      <workItem from="1717978552193" duration="2890000" />
+      <workItem from="1717981465447" duration="45330000" />
+      <workItem from="1718324349854" duration="204109000" />
+      <workItem from="1720657222778" duration="14030000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/Lib/site-packages/MySQLdb/connections.py</url>
+          <line>256</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kadai1/views.py</url>
+          <line>270</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/djangoProject1$0009_alter_patient_expiry_date_alter_patient_first_name_and_more.coverage" NAME="0009_alter_patient_expiry_date_alter_patient_first_name_and_more のカバレッジ結果" MODIFIED="1718678041562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kadai1/migrations" />
+  </component>
+</project>

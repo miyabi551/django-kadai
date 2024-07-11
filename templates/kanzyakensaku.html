@@ -1,0 +1,76 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>患者名検索機能</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>患者名検索機能</h1>
+
+    <form id="searchForm" method="get" action="{% url 'kanzyakensaku' %}">
+        <label for="patfname">患者姓:</label>
+        <input type="text" id="patfname" name="patfname"><br><br>
+
+        <label for="patlname">患者名:</label>
+        <input type="text" id="patlname" name="patlname"><br><br>
+
+        <button type="submit">検索</button>
+    </form>
+
+    
+    <div id="searchResults">
+        <h2>検索結果</h2>
+        {% if patients %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>患者ID</th>
+                        <th>患者姓</th>
+                        <th>患者名</th>
+                        <th>保険証記号番号</th>
+                        <th>有効期限</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                        <tr>
+                            <td>{{ patient.patid }}</td>
+                            <td>{{ patient.patfname }}</td>
+                            <td>{{ patient.patlname }}</td>
+                            <td>{{ patient.hokenmei }}</td>
+                            <td>{{ patient.hokenexp|date:"Y-m-d" }}</td>
+                            <td>
+                                <a href="{% url 'kusuri_tuika' %}?patid={{ patient.patid }}
+                                &patfname={{ patient.patfname }}
+                                &patlname={{ patient.patlname }}
+                                &hokenmei={{ patient.hokenmei }}
+                                &hokenexp={{ patient.hokenexp|date:"Y-m-d" }}">薬剤追加</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+             <p>検索結果がありません。</p>
+        {% endif %}
+    </div>
+</body>
+</html>

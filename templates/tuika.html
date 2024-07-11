@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>病院登録フォーム</title>
+</head>
+<body>
+    <h1>病院登録フォーム</h1>
+    <form action="{% url 'tuika' %}" method="POST">
+        {% csrf_token %}
+        <label for="tabyouinid">病院ID:</label>
+        <input type="text" id="tabyouinid" name="tabyouinid" required><br><br>
+        
+        <label for="tabyouinmei">病院名:</label>
+        <input type="text" id="tabyouinmei" name="tabyouinmei" required><br><br>
+        
+        <label for="tabyouinaddress">住所:</label>
+        <input type="text" id="tabyouinaddress" name="tabyouinaddress" required><br><br>
+        
+        <label for="tabyouintel">電話番号:</label>
+        <input type="text" id="tabyouintel" name="tabyouintel" required><br><br>
+        
+        <label for="tabyouinshihonkin">資本金:</label>
+        <input type="text" id="tabyouinshihonkin" name="tabyouinshihonkin" required><br><br>
+        
+        <label for="kyukyu">緊急対応:</label>
+        <input type="checkbox" id="kyukyu" name="kyukyu" value="1"><br><br>
+        
+        <button type="submit">登録する</button>
+    </form>
+    <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">一覧表示</button>
+    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+</body>
+</html>

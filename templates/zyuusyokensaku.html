@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>他住所→病院検索機能</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>他住所→病院検索機能</h1>
+
+    <div id="errorMessages" style="color: red;">
+        {% if not tabyouins %}
+            該当する病院はありません。
+        {% endif %}
+    </div>
+
+    <form method="get" action="{% url 'zyuusyokensaku' %}">
+        <label for="tabyouinaddress">住所:</label><br>
+        <input type="text" id="tabyouinaddress" name="tabyouinaddress" value="{{ searched_tabyouinaddress }}"><br><br>
+        <input type="submit" value="検索">
+    </form>
+
+    <h2>検索結果</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>病院ID</th>
+                <th>病院名</th>
+                <th>住所</th>
+                <th>電話番号</th>
+                <th>資本金</th>
+                <th>救急対応</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tabyouin in tabyouins %}
+                <tr>
+                    <td>{{ tabyouin.tabyouinid }}</td>
+                    <td>{{ tabyouin.tabyouinmei }}</td>
+                    <td>{{ tabyouin.tabyouinaddress }}</td>
+                    <td>{{ tabyouin.tabyouintel }}</td>
+                    <td>{{ tabyouin.tabyouinshihonkin }}</td>
+                    <td>
+                        {% if tabyouin.kyukyu %}
+                            有
+                        {% else %}
+                            無
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button onclick="window.location.href='{% url 'tuika' %}'">病院追加</button>
+    <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">病院一覧表示</button>
+    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+</body>
+</html>

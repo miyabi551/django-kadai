@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者用ページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dashboard-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .dashboard-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .dashboard-container a {
+            display: block;
+            margin-bottom: 10px;
+            color: #0002ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>管理者ページ</h1>
+        <form action="/login/" method="post">
+
+        {% csrf_token %}
+            </form>
+        <a href="{% url 'tourokukinou' %}">従業員登録機能</a>
+        <a href="/simeihenkou/">従業員氏名変更機能</a>
+        <a href="/tuika/">レコード追加機能</a>
+        <a href="/itiranhyouzi/">他病院一覧表示機能</a>
+        <a href="/zyuusyokensaku/">他住所→病院検索機能</a>
+        
+        <a href="/logout/">ログアウト</a>
+    </div>
+</body>
+</html>

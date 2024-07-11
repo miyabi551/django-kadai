@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>病院登録確認</title>
+</head>
+<body>
+    <h1>病院登録確認</h1>
+    <p>病院ID: {{ tabyouin.tabyouinid }}</p>
+    <p>病院名: {{ tabyouin.tabyouinmei }}</p>
+    <p>住所: {{ tabyouin.tabyouinaddress }}</p>
+    <p>電話番号: {{ tabyouin.tabyouintel }}</p>
+    <p>資本金: {{ tabyouin.tabyouinshihonkin }}</p>
+    <p>救急対応: {{ tabyouin.kyukyu|yesno:"有,無" }}</p>
+    <p>上記の内容でよろしいですか？</p>
+    <form action="{% url 'confirm_tabyouin_submission' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">確定する</button>
+    </form>
+    <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">一覧表示</button>
+    <button onclick="window.location.href='{% url 'tuika' %}'">やり直す</button>
+</body>
+</html>

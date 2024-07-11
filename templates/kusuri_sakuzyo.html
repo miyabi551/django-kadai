@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薬剤削除</title>
+</head>
+<body>
+    <h1>薬剤削除</h1>
+
+    <!-- 薬剤削除画面 -->
+    <form action="/kusuri_sakuzyo/" method="post">
+        {% csrf_token %}
+        <label for="medication_id">薬剤を選択してください:</label>
+        <select id="medication_id" name="medication_id" required>
+            <option value="" disabled selected>薬剤を選択してください</option>
+            {% for medication in medications %}
+                <option value="{{ medication.medicineid }}">{{ medication.medicinename }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="削除">
+    </form>
+
+    <!-- メニューに戻るボタン -->
+    <button onclick="window.location.href='{% url 'isya_login' %}'">メニューに戻る</button>
+</body>
+</html>

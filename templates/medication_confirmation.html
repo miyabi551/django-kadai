@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>薬投与確認</title>
+</head>
+<body>
+    <h1>薬投与確認</h1>
+
+    <!-- 確認画面 -->
+    <div id="confirmation">
+        <h2>以下の薬剤を投与します:</h2>
+        <ul>
+            {% for med, qty in selected_medications %}
+                <li>薬剤ID: {{ med }}, 数量: {{ qty }}</li>
+            {% endfor %}
+        </ul>
+        <button type="button" onclick="location.href='{% url 'medication_form' %}'">薬剤選択画面へ戻る</button>
+    </div>
+</body>
+</html>

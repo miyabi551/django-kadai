@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>病院一覧表示</title>
+</head>
+<body>
+    <h1>病院一覧表示</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>病院ID</th>
+                <th>病院名</th>
+                <th>住所</th>
+                <th>電話番号</th>
+                <th>資本金</th>
+                <th>救急対応</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tabyouin in tabyouins %}
+            <tr>
+                <td>{{ tabyouin.tabyouinid }}</td>
+                <td>{{ tabyouin.tabyouinmei }}</td>
+                <td>{{ tabyouin.tabyouinaddress }}</td>
+                <td>{{ tabyouin.tabyouintel }}</td>
+                <td>{{ tabyouin.tabyouinshihonkin }}</td>
+                <td>{{ tabyouin.kyukyu }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button onclick="window.location.href='{% url 'tuika' %}'">病院を登録する</button>
+    <br>
+    <br>
+    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">管理者画面に戻る</button>
+</body>
+</html>

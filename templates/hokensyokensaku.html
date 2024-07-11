@@ -1,0 +1,67 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保険証期限切れ患者検索</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>保険証期限切れ患者検索</h1>
+
+    <form id="searchForm" method="get" action="{% url 'hokensyokensaku' %}">
+        <label for="searchDate">日付:</label>
+        <input type="date" id="searchDate" name="searchDate" required><br><br>
+
+        <button type="submit">検索</button>
+          <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
+    </form>
+
+    
+    <div id="searchResults">
+        <h2>検索結果</h2>
+        {% if patients %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>患者ID</th>
+                        <th>患者姓</th>
+                        <th>患者名</th>
+                        <th>保険証記号番号</th>
+                        <th>有効期限</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                        <tr>
+                            <td>{{ patient.patid }}</td>
+                            <td>{{ patient.patfname }}</td>
+                            <td>{{ patient.patlname }}</td>
+                            <td>{{ patient.hokenmei }}</td>
+                            <td>{{ patient.hokenexp|date:"Y-m-d" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>該当する患者が見つかりませんでした。</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
