@@ -3,10 +3,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages  # pyexpat.errorsではなくdjango.contribのmessagesを使用
 from django.http import HttpResponseRedirect
-from django.template.defaultfilters import date
-import datetime
 from .models import Employee, Tabyouin
 from django.contrib.auth.hashers import check_password
+from datetime import date
 from django.http import JsonResponse
 import json
 from django.urls import reverse
@@ -15,7 +14,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout
 from .models import Patient
-from .models import Medication
+from .models import Medication, Medication_K
 
 
 def login_view(request):
@@ -69,10 +68,10 @@ def tourokukinou_view(request):
                 emppasswd=password,
                 emprole=role
             )
-            messages.success(request, '従業員が登録されました。')
+            messages.success(request, '登録しました。')
             return render(request, 'tourokukinou.html')
         except Exception as e:
-            messages.error(request, f'登録中にエラーが発生しました: {str(e)}')
+            messages.error(request, 'エラーが発生しました。')
             return render(request, 'tourokukinou.html')
 
     return render(request, 'tourokukinou.html')
@@ -90,16 +89,35 @@ def logout_view(request):
 
 def tuika_view(request):
     if request.method == 'POST':
-        tabyouin = {
-            'tabyouinid': request.POST.get('tabyouinid'),
-            'tabyouinmei': request.POST.get('tabyouinmei'),
-            'tabyouinaddress': request.POST.get('tabyouinaddress'),
-            'tabyouintel': request.POST.get('tabyouintel'),
-            'tabyouinshihonkin': request.POST.get('tabyouinshihonkin'),
-            'kyukyu': request.POST.get('kyukyu') == '1',
-        }
-        request.session['tabyouin'] = tabyouin
-        return redirect('confirm_tabyouin')
+        tabyouinid = request.POST.get('tabyouinid')
+        tabyouinmei = request.POST.get('tabyouinmei')
+        tabyouinaddress = request.POST.get('tabyouinaddress')
+        tabyouintel = request.POST.get('tabyouintel')
+        tabyouinshihonkin = request.POST.get('tabyouinshihonkin')
+        kyukyu = request.POST.get('kyukyu') == '1'
+
+        # モデルにデータを保存
+        if not tabyouinid or not tabyouinmei or not tabyouinaddress or not tabyouintel or not tabyouinshihonkin:
+            messages.error(request, '全ての必須項目を入力してください。')
+        if Tabyouin.objects.filter(tabyouinid=tabyouinid):
+            messages.error(request, '同じIDは登録できません。')
+
+        else:
+            try:
+                new_tabyouin = Tabyouin(
+                    tabyouinid=tabyouinid,
+                    tabyouinmei=tabyouinmei,
+                    tabyouinaddress=tabyouinaddress,
+                    tabyouintel=tabyouintel,
+                    tabyouinshihonkin=tabyouinshihonkin,
+                    kyukyu=kyukyu
+                )
+                new_tabyouin.save()
+                messages.success(request, '登録しました。')
+                return redirect('itiranhyouzi')
+            except Exception as e:
+                messages.error(request, f'エラーが発生しました: {e}')
+
     return render(request, 'tuika.html')
 
 
@@ -148,15 +166,17 @@ def simeihenkou_view(request):
         empfname = request.POST.get('empfname')
         emplname = request.POST.get('emplname')
 
-        # データベース更新
+        if not empid or not empfname or not emplname:
+            return render(request, 'error_e.html', {'error': 'すべてのフィールドを入力してください。'})
+
         try:
             employee = Employee.objects.get(empid=empid)
             employee.empfname = empfname
             employee.emplname = emplname
             employee.save()
-            return JsonResponse({'success': '名前が更新されました。'})
+            return render(request, 'success_e.html', {'success': '名前が更新されました。'})
         except Employee.DoesNotExist:
-            return JsonResponse({'error': '指定された従業員が見つかりません。'})
+            return render(request, 'error_e.html', {'error': '指定された従業員が見つかりません。'})
         except Exception as e:
             return JsonResponse({'error': str(e)})
 
@@ -230,67 +250,160 @@ def uketuke_login(request):
 
 def kanzyatouroku_view(request):
     if request.method == 'POST':
-        if request.POST.get('action') == 'confirm':
-            # 確認画面表示用のデータを取得
-            context = {
-                'patid': request.POST.get('patid'),
-                'patfname': request.POST.get('patfname'),
-                'patlname': request.POST.get('patlname'),
-                'hokenmei': request.POST.get('hokenmei'),
-                'hokenexp': request.POST.get('hokenexp'),
-                'confirmation': True
-            }
-            return render(request, 'kanzyatouroku.html', context)
-        elif request.POST.get('action') == 'submit':
-            # データベースに保存
-            patient = Patient(
-                patid=request.POST.get('patid'),
-                patfname=request.POST.get('patfname'),
-                patlname=request.POST.get('patlname'),
-                hokenmei=request.POST.get('hokenmei'),
-                hokenexp=request.POST.get('hokenexp')
-            )
-            patient.save()
-            return redirect('success')  # 成功ページにリダイレクト
-    else:
-        context = {
-            'patid': '',
-            'patfname': '',
-            'patlname': '',
-            'hokenmei': '',
-            'hokenexp': '',
-            'confirmation': False
-        }
-        return render(request, 'kanzyatouroku.html', context)
-
-
-def zyouhouhenkou_view(request):
-    return render(request, 'zyouhouhenkou.html')
-
-
-def kanzyakanri_view(request):
-    if request.method == 'POST':
+        action = request.POST.get('action')
         patid = request.POST.get('patid')
         patfname = request.POST.get('patfname')
         patlname = request.POST.get('patlname')
         hokenmei = request.POST.get('hokenmei')
         hokenexp = request.POST.get('hokenexp')
 
-        try:
-            patient = Patient.objects.get(patid=patid, patfname=patfname, patlname=patlname)
-            patient.hokenmei = hokenmei
-            patient.hokenexp = hokenexp
-            patient.save()
-            messages.success(request, '保険証情報が正常に更新されました。')
-            return redirect('kanzyakanri')
-        except Patient.DoesNotExist:
-            error_message = '指定された患者が見つかりません。'
-            return render(request, 'kanzyakanri.html', {'error_message': error_message})
-        except Exception as e:
-            error_message = f'エラーが発生しました: {str(e)}'
-            return render(request, 'kanzyakanri.html', {'error_message': error_message})
+        if action == 'confirm':
+            # 患者IDの重複チェック
+            if Patient.objects.filter(patid=patid).exists():
+                messages.error(request, "このIDは既に登録されています。")
+                return render(request, 'kanzyatouroku.html', {
+                    'patid': patid,
+                    'patfname': patfname,
+                    'patlname': patlname,
+                    'hokenmei': hokenmei,
+                    'hokenexp': hokenexp,
+                    'confirmation': False
+                })
 
-    return render(request, 'kanzyakanri.html')
+                # 同姓同名の重複チェック
+            if Patient.objects.filter(patfname=patfname, patlname=patlname).exists():
+                messages.error(request, "同じ姓と名の患者が既に登録されています。")
+                return render(request, 'kanzyatouroku.html', {
+                    'patid': patid,
+                    'patfname': patfname,
+                    'patlname': patlname,
+                    'hokenmei': hokenmei,
+                    'hokenexp': hokenexp,
+                    'confirmation': False
+                })
+
+            # 有効期限の日付チェック
+            if hokenexp and date.fromisoformat(hokenexp) < date.today():
+                messages.error(request, "有効期限は今日以降の日付で入力してください。")
+                return render(request, 'kanzyatouroku.html', {
+                    'patid': patid,
+                    'patfname': patfname,
+                    'patlname': patlname,
+                    'hokenmei': hokenmei,
+                    'hokenexp': hokenexp,
+                    'confirmation': False
+                })
+
+            # 確認画面表示用のデータを取得
+            context = {
+                'patid': patid,
+                'patfname': patfname,
+                'patlname': patlname,
+                'hokenmei': hokenmei,
+                'hokenexp': hokenexp,
+                'confirmation': True
+            }
+            return render(request, 'kanzyatouroku.html', context)
+
+        elif action == 'submit':
+            # データベースに保存
+            patient = Patient(
+                patid=patid,
+                patfname=patfname,
+                patlname=patlname,
+                hokenmei=hokenmei,
+                hokenexp=hokenexp
+            )
+            patient.save()
+            messages.success(request, "患者情報が正常に登録されました。")
+            return redirect('success')  # 成功ページにリダイレクト
+
+    # 初期表示またはエラー時のデフォルト値
+    context = {
+        'patid': '',
+        'patfname': '',
+        'patlname': '',
+        'hokenmei': '',
+        'hokenexp': '',
+        'confirmation': False
+    }
+    return render(request, 'kanzyatouroku.html', context)
+
+
+def zyouhouhenkou_view(request):
+    if request.method == 'POST':
+        empid = request.POST.get('empid')
+        emppasswd1 = request.POST.get('emppasswd1')
+        emppasswd2 = request.POST.get('emppasswd2')
+
+        if not empid or not emppasswd1 or not emppasswd2:
+            messages.error(request, 'すべてのフィールドを入力してください。')
+            return render(request, 'zyouhouhenkou.html')
+
+        if emppasswd1 != emppasswd2:
+            messages.error(request, 'パスワードが一致しません。')
+            return render(request, 'zyouhouhenkou.html')
+
+        try:
+            employee = Employee.objects.get(empid=empid)
+            employee.emppasswd = emppasswd1
+            employee.save()
+            messages.success(request, 'パスワードが更新されました。')
+            return redirect('uketuke_login')
+        except Employee.DoesNotExist:
+            messages.error(request, '指定された従業員が見つかりません。')
+            return render(request, 'zyouhouhenkou.html')
+
+    return render(request, 'zyouhouhenkou.html')
+
+
+def kanzyakanri(request):
+    if request.method == 'GET' and 'action' in request.GET and request.GET['action'] == 'confirm':
+        patid = request.GET.get('patid')
+        new_hokenmei = request.GET.get('hokenmei')
+        new_hokenexp = request.GET.get('hokenexp')
+
+        if not all([patid, new_hokenmei, new_hokenexp]):
+            messages.error(request, '患者IDと保険証記号番号と有効期限を入力してください。')
+            return redirect('kanzyakanri')
+
+        if len(new_hokenmei) > 10:
+            messages.error(request, '保険証記号番号は10文字以内で入力してください。')
+            return redirect('kanzyakanri')
+
+        try:
+            new_hokenexp_date = date.fromisoformat(new_hokenexp)
+            if new_hokenexp_date < date.today():
+                messages.error(request, '有効期限は今日以降の日付を設定してください。')
+                return redirect('kanzyakanri')
+
+            # 他の患者の有効期限と重複しないことを確認
+            if Patient.objects.filter(hokenexp=new_hokenexp).exists():
+                messages.error(request, '同じ有効期限が既に存在します。他の日付を選択してください。')
+                return redirect('kanzyakanri')
+
+                # 他の患者で同じhokenmeiが使われていないことを確認
+            if Patient.objects.filter(hokenmei=new_hokenmei).exclude(patid=patid).exists():
+                messages.error(request,'この保険証記号番号は既に他の患者で使用されています。別の番号を入力してください。')
+                return redirect('kanzyakanri')
+
+            # 新しい値を設定
+            patient = Patient.objects.get(patid=patid)
+            patient.hokenmei = new_hokenmei
+            patient.hokenexp = new_hokenexp
+            patient.save()
+
+            # 変更が完了した後のリダイレクト
+            messages.success(request, '保険証の変更が成功しました。')
+            return redirect('kanzyakanri')  # 変更が完了した後のリダイレクト先を適宜設定してください
+
+        except Patient.DoesNotExist:
+            messages.error(request, '該当する患者が見つかりませんでした。')
+            return redirect('kanzyakanri')
+
+    # Patientデータをすべて取得してテンプレートに渡す
+    patients = Patient.objects.all()
+    return render(request, 'kanzyakanri.html', {'patients': patients})
 
 
 def confirm_patient_insurance_change_view(request):
@@ -351,62 +464,105 @@ def kanzyakensaku_view(request):
     return render(request, 'kanzyakensaku.html', {'patients': patients})
 
 
-def kusuri_tuika(request):
+def kusuri_touyo(request):
     if request.method == 'POST':
-        patid = request.POST['patient_id']
-        patfname = request.POST['patient_fname']
-        patlname = request.POST['patient_lname']
-        hokenmei = request.POST['kanzyahokenmei']
-        hokenexp = request.POST['kanzyahokenexp']
-
-        medicineids = request.POST.getlist('kanzyamedids[]')
         medicinenames = request.POST.getlist('kanzyamednames[]')
-        medunits = request.POST.getlist('medunits[]')
+        medcounts = request.POST.getlist('medcounts[]')
+        patid = request.POST.get('patid')
 
-        print(f'患者ID: {patid}')
-        print(f'患者姓: {patfname}')
-        print(f'患者名: {patlname}')
-        print(f'保険証記号番号: {hokenmei}')
-        print(f'保険証有効期限: {hokenexp}')
+        patfname = request.POST.get('patfname') or request.GET.get('patfname')
+        patlname = request.POST.get('patlname') or request.GET.get('patlname')
 
-        for i in range(medicineids):
-            medicineid = medicineids[i]
+        # 患者IDの確認
+        if not patid or not Patient.objects.filter(patid=patid).exists():
+            messages.error(request, '患者IDが無効です。')
+            return render(request, 'kusuri_touyo.html', {
+                'error': '患者IDが無効です。',
+                'all_medications': Medication.objects.all(),
+                'medications': Medication_K.objects.all(),
+                'patid': request.GET.get('patid'),
+                'patfname': request.GET.get('patfname'),
+                'patlname': request.GET.get('patlname')
+            })
+
+        # 薬剤情報の保存
+        for i in range(len(medicinenames)):
             medicinename = medicinenames[i]
-            medunit = medunits[i]
+            medcount = medcounts[i]
 
-            print(f'薬剤ID: {medicineid}, 薬剤名: {medicinename}, 数量: {medunit}')
+            # 薬剤名の存在確認
+            medication = Medication.objects.filter(medicinename=medicinename).first()
+            if medication:
+                Medication_K.objects.create(
+                    kanzyaid=patid,
+                    kanzyasei=patfname,
+                    kanzyamei=patlname,
+                    kusuriname=medicinename,
+                    suuryou=medcount
+                )
+            else:
+                messages.error(request, '無効な薬剤名です。')
+                return render(request, 'kusuri_touyo.html', {
+                    'all_medications': Medication.objects.all(),
+                    'medications': Medication_K.objects.all(),
+                    'patid': request.GET.get('patid'),
+                    'patfname': request.GET.get('patfname'),
+                    'patlname': request.GET.get('patlname')
+                })
 
-            Medication.objects.create(
-                kanzyaid=patid,
-                kanzyafname=patfname,
-                kanzyalname=patlname,
-                kanzyahokenmei=hokenmei,
-                kanzyahokenexp=hokenexp,
-                kanzyamedid=medicineid,
-                kanzyamedname=medicinename,
-                medcount=medunit
-            )
+        messages.success(request, '薬剤情報が正常に登録されました。')
+        return redirect('success_k')
 
-        return redirect(reverse('success_k'))  # 適切なリダイレクト先を設定してください
-    return render(request, 'kusuri_tuika.html')
+    context = {
+        'all_medications': Medication.objects.all(),
+        'medications': Medication_K.objects.all(),
+        'patid': request.GET.get('patid'),
+        'patfname': request.GET.get('patfname'),
+        'patlname': request.GET.get('patlname')
+    }
+    return render(request, 'kusuri_touyo.html', context)
 
 
 def kusuri_tuikakakunin_view(request):
     return render(request, 'kusuri_tuikakakunin.html')
 
 
-def kusuri_sakuzyo_view(request):
+def kusuri_tuika(request):
     if request.method == 'POST':
-        medication_id = request.POST.get('medication_id', '')
+        medicinename = request.POST.get('medicinename')
+        unit = request.POST.get('unit')
+
+        if medicinename:
+            # 薬剤名の重複を防ぐために、既に存在するかを確認
+            if Medication.objects.filter(medicinename=medicinename, unit=unit).exists():
+                messages.error(request, 'この薬剤名は既に登録されています。')
+                return redirect('kusuri_tuika')
+
+            # 薬剤を作成し保存
+            Medication.objects.create(medicinename=medicinename, unit=unit)
+            messages.success(request, '薬剤が正常に追加されました。')
+        else:
+            messages.error(request, '薬剤名を入力してください。')
+
+        return redirect('kusuri_tuika')
+
+    return render(request, 'kusuri_tuika.html')
+
+
+def kusuri_sakuzyo(request):
+    if request.method == 'POST':
+        medication_id = request.POST.get('medication_id')
         try:
             medication = Medication.objects.get(pk=medication_id)
             medication.delete()
-            return redirect('kusuri_sakuzyo')  # 薬剤削除画面にリダイレクト
+            messages.success(request, '薬剤が正常に削除されました。')
         except Medication.DoesNotExist:
-            return HttpResponse("薬剤が見つかりませんでした。", status=404)
+            messages.error(request, '指定された薬剤が見つかりません。')
+        return redirect('kusuri_sakuzyo')
 
     medications = Medication.objects.all()
     return render(request, 'kusuri_sakuzyo.html', {'medications': medications})
+
 
 
 def syoti_kakutei_view(request):

@@ -5,26 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2cb208-60ba-4739-8452-278441d064fb" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/djangoProject1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject1/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject1/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject1/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/djangoProject1/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kadai1/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6278ea20-0098-407d-89f6-e4ac70452b5f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6278ea20-0098-407d-89f6-e4ac70452b5f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoProject1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoProject1/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai1/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai1/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai1/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kadai1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kadai1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/isya_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/isya_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/k/henkoukakunin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanrisya_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanrisya_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanzyakanri.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanzyakanri.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanzyakensaku.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanzyakensaku.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanzyatouroku.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanzyatouroku.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kusuri_sakuzyo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kusuri_sakuzyo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kusuri_tuika.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kusuri_touyo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/simeihenkou.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/simeihenkou.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/success_k.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/success_k.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tourokukinou.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tourokukinou.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tuika.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tuika.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tyuukan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/uketuke_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uketuke_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/zyouhouhenkou.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/zyouhouhenkou.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,14 +74,18 @@
     &quot;JavaScript デバッグ.error.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.hokensyokensaku.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.insurance_change_success.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kanzyakanri.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.kanzyakensaku.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.kanzyatouroku.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.kanzyatouroku2.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.kusuri_tuika.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.kusuri_tuikakakunin.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.search_patient_form.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.syoti_kakutei.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript デバッグ.uketuke_login.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript デバッグ.zyuusyokensaku.html.executor&quot;: &quot;Run&quot;,
     &quot;Python.0009_alter_patient_expiry_date_alter_patient_first_name_and_more.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
@@ -130,19 +137,39 @@
     </myKeys>
   </component>
   <component name="RunManager" selected="Django サーバー.djangoProject1">
-    <configuration name="insurance_change_success.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/insurance_change_success.html" useBuiltInWebServerPort="true">
+    <configuration name="kanzyakanri.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kanzyakanri.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="kanzyatouroku.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kanzyatouroku.html" useBuiltInWebServerPort="true">
+    <configuration name="kanzyakensaku.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kanzyakensaku.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="kusuri_tuika.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kusuri_tuika.html" useBuiltInWebServerPort="true">
+    <configuration name="kusuri_tuikakakunin.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/kusuri_tuikakakunin.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="search_patient_form.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/search_patient_form.html" useBuiltInWebServerPort="true">
+    <configuration name="uketuke_login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/uketuke_login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="syoti_kakutei.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/djangoProject1/templates/syoti_kakutei.html" useBuiltInWebServerPort="true">
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="djangoProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kadai1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kadai1/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="djangoProject1" type="Python.DjangoServer" factoryName="Django server">
@@ -155,13 +182,14 @@
         <env name="DJANGO_SETTINGS_MODULE" value="djangoProject1.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (djangoProject1)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="localhost" />
+      <option name="port" value="80" />
+      <option name="host" value="0.0.0.0" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -170,13 +198,21 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django サーバー.djangoProject1" />
+      <item itemvalue="JavaScript デバッグ.kusuri_tuikakakunin.html" />
+      <item itemvalue="JavaScript デバッグ.kanzyakanri.html" />
+      <item itemvalue="JavaScript デバッグ.kanzyakensaku.html" />
+      <item itemvalue="JavaScript デバッグ.uketuke_login.html" />
+      <item itemvalue="Python.views" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript デバッグ.kusuri_tuika.html" />
-        <item itemvalue="JavaScript デバッグ.syoti_kakutei.html" />
-        <item itemvalue="JavaScript デバッグ.search_patient_form.html" />
-        <item itemvalue="JavaScript デバッグ.insurance_change_success.html" />
-        <item itemvalue="JavaScript デバッグ.kanzyatouroku.html" />
+        <item itemvalue="JavaScript デバッグ.kusuri_tuikakakunin.html" />
+        <item itemvalue="Python.views" />
+        <item itemvalue="JavaScript デバッグ.kanzyakanri.html" />
+        <item itemvalue="JavaScript デバッグ.kanzyakensaku.html" />
+        <item itemvalue="JavaScript デバッグ.uketuke_login.html" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +257,12 @@
       <workItem from="1717981465447" duration="45330000" />
       <workItem from="1718324349854" duration="204109000" />
       <workItem from="1720657222778" duration="14030000" />
+      <workItem from="1721096354250" duration="41993000" />
+      <workItem from="1721352840001" duration="27936000" />
+      <workItem from="1721798222175" duration="1601000" />
+      <workItem from="1721799844332" duration="37408000" />
+      <workItem from="1722325645787" duration="12658000" />
+      <workItem from="1722836737086" duration="8879000" />
     </task>
     <servers />
   </component>
@@ -246,15 +288,11 @@
           <line>256</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/kadai1/views.py</url>
-          <line>270</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/djangoProject1$views.coverage" NAME="views のカバレッジ結果" MODIFIED="1721368348344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kadai1" />
     <SUITE FILE_PATH="coverage/djangoProject1$0009_alter_patient_expiry_date_alter_patient_first_name_and_more.coverage" NAME="0009_alter_patient_expiry_date_alter_patient_first_name_and_more のカバレッジ結果" MODIFIED="1718678041562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/kadai1/migrations" />
   </component>
 </project>

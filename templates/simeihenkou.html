@@ -15,7 +15,8 @@
 
     <div id="errorMessages" class="error"></div>
 
-    <form id="updateForm">
+    <form id="updateForm" method="POST" action="{% url 'simeihenkou_view' %}">
+        {% csrf_token %}
         <label for="empid">従業員ID:</label><br>
         <input type="text" id="empid" name="empid"><br><br>
         <label for="empfname">新しい名:</label><br>
@@ -24,6 +25,6 @@
         <input type="text" id="emplname" name="emplname"><br><br>
         <input type="submit" value="名前変更">
     </form>
-  <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
 </body>
 </html>

@@ -4,26 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>保険証変更確認</title>
+        <style>
+        /* スタイルの例：囲いのスタイル */
+        .patient-list {
+            border: 1px solid #bbbbbb;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .patient-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .patient-list th, .patient-list td {
+            border: 1px solid #337bbc;
+            padding: 8px;
+            text-align: left;
+        }
+        .patient-list th {
+            background-color: #f2fbbb;
+        }
+    </style>
+</head>
 </head>
 <body>
     <h1>保険証変更確認</h1>
-    <form method="post" action="{% url 'kanzyakanri' %}">
+    
+      <!-- 成功/エラーメッセージの表示 -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <!-- フォーム -->
+    <form method="get" action="{% url 'kanzyakanri' %}">
         {% csrf_token %}
-        <input type="hidden" name="patid" value="{{ patient.patid }}">
+        <label for="patid">患者ID:</label>
+        <input type="text" id="patid" name="patid" placeholder="患者IDを入力" required><br><br>
         
-        <label for="current_hokenmei">現在の保険証記号番号:</label>
-        <input type="text" id="current_hokenmei" name="current_hokenmei" value="{{ patient.hokenmei }}" readonly><br><br>
-        
+
         <label for="hokenmei">新しい保険証記号番号:</label>
-        <input type="text" id="hokenmei" name="hokenmei" placeholder="新しい保険証記号番号を入力してください" required><br><br>
-        
-        <label for="current_hokenexp">現在の有効期限:</label>
-        <input type="text" id="current_hokenexp" name="current_hokenexp" value="{{ patient.hokenexp }}" readonly><br><br>
-        
+        <input type="text" id="hokenmei" name="hokenmei" placeholder="新しい保険証記号番号を入力" required><br><br>
+
         <label for="hokenexp">新しい有効期限:</label>
-        <input type="date" id="hokenexp" name="hokenexp" required><br><br>
-        
+        <input type="date" id="hokenexp" name="hokenexp" placeholder="新しい有効期限を入力" required><br><br>
+
         <button type="submit" name="action" value="confirm">変更確認</button>
     </form>
+    
+    <!-- 患者データの一覧表示 -->
+    <h2>患者データ一覧</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>患者ID</th>
+                <th>名前</th>
+                <th>保険証記号番号</th>
+                <th>有効期限</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.patid }}</td>
+                <td>{{ patient.patfname }} {{ patient.patlname }}</td>
+                <td>{{ patient.hokenmei }}</td>
+                <td>{{ patient.hokenexp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.location.href='{% url 'uketuke_login' %}'">受付画面に戻る</button>
 </body>
 </html>

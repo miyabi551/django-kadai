@@ -16,6 +16,13 @@
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="ログイン">
     </form>
-
+    
+ {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>

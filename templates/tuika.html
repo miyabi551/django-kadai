@@ -3,32 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>病院登録フォーム</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .messages {
+            margin-bottom: 20px;
+        }
+        .messages ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        .messages li {
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .messages .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .messages .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
 </head>
 <body>
-    <h1>病院登録フォーム</h1>
-    <form action="{% url 'tuika' %}" method="POST">
-        {% csrf_token %}
-        <label for="tabyouinid">病院ID:</label>
-        <input type="text" id="tabyouinid" name="tabyouinid" required><br><br>
-        
-        <label for="tabyouinmei">病院名:</label>
-        <input type="text" id="tabyouinmei" name="tabyouinmei" required><br><br>
-        
-        <label for="tabyouinaddress">住所:</label>
-        <input type="text" id="tabyouinaddress" name="tabyouinaddress" required><br><br>
-        
-        <label for="tabyouintel">電話番号:</label>
-        <input type="text" id="tabyouintel" name="tabyouintel" required><br><br>
-        
-        <label for="tabyouinshihonkin">資本金:</label>
-        <input type="text" id="tabyouinshihonkin" name="tabyouinshihonkin" required><br><br>
-        
-        <label for="kyukyu">緊急対応:</label>
-        <input type="checkbox" id="kyukyu" name="kyukyu" value="1"><br><br>
-        
-        <button type="submit">登録する</button>
-    </form>
-    <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">一覧表示</button>
-    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+    <div class="container">
+        <h1>病院登録フォーム</h1>
+        <div class="messages">
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <form id="hospital-form" action="{% url 'tuika' %}" method="POST">
+            {% csrf_token %}
+            <label for="tabyouinid">病院ID:</label>
+            <input type="text" id="tabyouinid" name="tabyouinid" >
+            <br><br>
+            <label for="tabyouinmei">病院名:</label>
+            <input type="text" id="tabyouinmei" name="tabyouinmei" >
+            <br><br>
+            <label for="tabyouinaddress">住所:</label>
+            <input type="text" id="tabyouinaddress" name="tabyouinaddress" >
+            <br><br>
+            <label for="tabyouintel">電話番号:</label>
+            <input type="text" id="tabyouintel" name="tabyouintel" >
+            <div id="tel-error" class="error"></div>
+            <br><br>
+            <label for="tabyouinshihonkin">資本金:</label>
+            <input type="text" id="tabyouinshihonkin" name="tabyouinshihonkin" >
+            <div id="shihonkin-error" class="error"></div>
+            <br><br>
+            <label for="kyukyu">緊急対応:</label>
+            <input type="checkbox" id="kyukyu" name="kyukyu" value="1">
+            <br><br>
+            <button type="submit">登録する</button>
+        </form>
+        <div class="buttons">
+            <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">一覧表示</button>
+            <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('hospital-form').addEventListener('submit', function(event) {
+            var shihonkinInput = document.getElementById('tabyouinshihonkin');
+            var telInput = document.getElementById('tabyouintel');
+            var shihonkinErrorDiv = document.getElementById('shihonkin-error');
+            var telErrorDiv = document.getElementById('tel-error');
+            
+            var shihonkinValue = shihonkinInput.value;
+            var telValue = telInput.value;
+            // 資本金のバリデーション
+            var shihonkinRegex = /^[\d,円]+$/;
+            if (!shihonkinRegex.test(shihonkinValue)) {
+                shihonkinErrorDiv.textContent = '資本金欄には数字と「,」「円」のみ入力してください。';
+                event.preventDefault(); // フォームの送信を防ぐ
+            } else {
+                shihonkinErrorDiv.textContent = ''; // エラーメッセージをクリア
+            }
+
+            // 電話番号のバリデーション
+            var telRegex = /^[\d()-]+$/;
+            if (!telRegex.test(telValue)) {
+                telErrorDiv.textContent = '電話番号には数字、括弧「()」、ハイフン「-」のみ入力してください。';
+                event.preventDefault(); // フォームの送信を防ぐ
+            } else {
+                telErrorDiv.textContent = ''; // エラーメッセージをクリア
+            }
+        });
+    </script>
 </body>
 </html>

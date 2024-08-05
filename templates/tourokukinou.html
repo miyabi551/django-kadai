@@ -3,44 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <title>従業員登録</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d8f3dc; /* ライトグリーン */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* ページの垂直スクロールを防止 */
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            animation: drop 1s ease-out forwards; /* アニメーションを適用 */
+        }
+        @keyframes drop {
+            0% {
+                transform: translateY(-1000px) rotate(-30deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(30px) rotate(10deg);
+                opacity: 1;
+            }
+            70% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1b4332; /* ダークグリーン */
+            border-bottom: 2px solid #1b4332;
+            padding-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #1b4332; /* ダークグリーン */
+        }
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #1b4332; /* ダークグリーン */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #1b4332; /* ダークグリーン */
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #081c15; /* さらにダークグリーン */
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .buttons button {
+            flex: 1;
+        }
+        .messages {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>従業員登録</h1>
-    <form  action="{% url 'tourokukinou' %}" method="post">
-        {% csrf_token %}
-        <br>
-        <label for="user_id">ユーザーID:</label>
-        <input type="text" id="user_id" name="user_id" required><br>
-        <br>
-        <label for="first_name">名:</label>
-        <input type="text" id="first_name" name="first_name" required><br>
-        <br>
-        <label for="last_name">姓:</label>
-        <input type="text" id="last_name" name="last_name" required><br>
-        <br>
-        <label for="password">パスワード:</label>
-        <input type="password" id="password" name="password" required><br>
-        <br>
-        <label for="confirm_password">パスワード確認:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required><br>
-        <br>
-        <label for="role">役割:</label>
-        <select id="role" name="role" required>
-            <option value="1">管理者</option>
-            <option value="2">受付</option>
-            <option value="3">医者</option>
-        </select><br>
-        <input type="hidden" name="action" value="register">
-        <br>
-        <button type="submit">登録確認</button>
-    </form>
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+    <div class="container">
+        <h1>従業員登録</h1>
+        <form action="{% url 'tourokukinou' %}" method="post">
+            {% csrf_token %}
+            <label for="user_id">ユーザーID:</label>
+            <input type="text" id="user_id" name="user_id" required>
+            
+            <label for="last_name">姓:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            
+            <label for="first_name">名:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm_password">パスワード確認:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            
+            <label for="role">役割:</label>
+            <select id="role" name="role" required>
+                <option value="1">管理者</option>
+                <option value="2">受付</option>
+                <option value="3">医者</option>
+            </select>
+            
+            <input type="hidden" name="action" value="register">
+            
+            <button type="submit">登録確認</button>
+        </form>
+        {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="buttons">
+            <button onclick="window.location.href='{% url 'itiranhyouzi' %}'">一覧表示</button>
+            <button onclick="window.location.href='{% url 'kanrisya_login' %}'">戻る</button>
+        </div>
+    </div>
 </body>
 </html>

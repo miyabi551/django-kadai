@@ -13,7 +13,7 @@ class Employee(models.Model):
 
 
 class Tabyouin(models.Model):
-    tabyouinid = models.CharField(max_length=8, unique=True, primary_key=True)
+    tabyouinid = models.CharField(max_length=20, unique=True, primary_key=True)
     tabyouinmei = models.CharField(max_length=64)
     tabyouinaddress = models.CharField(max_length=64)
     tabyouintel = models.CharField(max_length=13)
@@ -36,7 +36,7 @@ class Patient(models.Model):
 
 
 class Medication(models.Model):
-    medicineid = models.CharField(max_length=8, primary_key=True)
+    medicineid = models.AutoField(max_length=8, primary_key=True)
     medicinename = models.CharField(max_length=64, blank=True, null=True)
     unit = models.CharField(max_length=8, blank=True, null=True)
 
@@ -45,15 +45,14 @@ class Medication(models.Model):
 
 
 class Medication_K(models.Model):
-    kanzyaid = models.CharField(max_length=8)
-    kanzyaname = models.CharField(max_length=64)
-    kanzyafname = models.CharField(max_length=64)
-    kanzyalname = models.CharField(max_length=64)
-    kanzyahokenmei = models.CharField(max_length=64)
-    kanzyahokenexp = models.DateField()
-    kanzyamedid = models.CharField(max_length=8)
-    kanzyamedname = models.CharField(max_length=64, blank=True, null=True)
-    medcount = models.DateField(max_length=8, blank=True, null=True)
+    id = models.AutoField(primary_key=True)
+    kanzyaid = models.IntegerField()
+    kanzyasei = models.CharField(max_length=64, blank=False)
+    kanzyamei = models.CharField(max_length=64, blank=False)
+    kusuriname = models.CharField(max_length=100)
+    suuryou = models.IntegerField()
 
     class Meta:
         db_table = 'kadai1_Medication_K'
+
+

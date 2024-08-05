@@ -58,11 +58,7 @@
                             <td>{{ patient.hokenmei }}</td>
                             <td>{{ patient.hokenexp|date:"Y-m-d" }}</td>
                             <td>
-                                <a href="{% url 'kusuri_tuika' %}?patid={{ patient.patid }}
-                                &patfname={{ patient.patfname }}
-                                &patlname={{ patient.patlname }}
-                                &hokenmei={{ patient.hokenmei }}
-                                &hokenexp={{ patient.hokenexp|date:"Y-m-d" }}">薬剤追加</a>
+                                <a href="{% url 'kusuri_touyo' %}?patid={{ patient.patid }}&patfname={{ patient.patfname }}&patlname={{ patient.patlname }}">薬剤追加</a>
                             </td>
                         </tr>
                     {% endfor %}

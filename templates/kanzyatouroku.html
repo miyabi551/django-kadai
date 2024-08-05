@@ -8,10 +8,23 @@
         .hidden {
             display: none;
         }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <h1>患者登録</h1>
+
+    <div class="messages">
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="error">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 
     <!-- 患者登録画面 -->
     <div id="registrationSection" class="{% if confirmation %}hidden{% endif %}">
@@ -31,9 +44,10 @@
 
             <label for="hokenexp">有効期限:</label>
             <input type="date" id="hokenexp" name="hokenexp" required value="{{ hokenexp }}"><br><br>
+            <div id="date-error" class="error"></div>
 
             <button type="submit" name="action" value="confirm">登録確認</button>
-            <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
+            <button type="button" onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
         </form>
     </div>
 
@@ -61,5 +75,20 @@
             <button type="submit">修正</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            var dateInput = document.getElementById('hokenexp');
+            var dateErrorDiv = document.getElementById('date-error');
+            
+            var today = new Date().toISOString().split('T')[0]; // 今日の日付を取得
+            if (dateInput.value < today) {
+                dateErrorDiv.textContent = '有効期限は今日以降の日付で入力してください。';
+                event.preventDefault(); // フォームの送信を防ぐ
+            } else {
+                dateErrorDiv.textContent = ''; // エラーメッセージをクリア
+            }
+        });
+    </script>
 </body>
 </html>

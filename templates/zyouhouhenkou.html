@@ -1,5 +1,3 @@
-<!-- zyouhouhenkou.html -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,30 +9,50 @@
             color: red;
         }
     </style>
+    <script>
+        function changePassword() {
+            const empid = document.getElementById('empid').value;
+            const emppasswd1 = document.getElementById('emppasswd1').value;
+            const emppasswd2 = document.getElementById('emppasswd2').value;
+            const errorMessage = document.getElementById('employeeErrorMessage');
+
+            errorMessage.textContent = '';
+
+            if (!empid || !emppasswd1 || !emppasswd2) {
+                errorMessage.textContent = 'すべてのフィールドを入力してください。';
+                return;
+            }
+
+            if (emppasswd1 !== emppasswd2) {
+                errorMessage.textContent = 'パスワードが一致しません。';
+                return;
+            }
+
+            document.getElementById('employeePasswordChangeForm').submit();
+        }
+    </script>
 </head>
 <body>
     <h1>パスワード変更</h1>
 
-    <!-- 従業員用パスワード変更 -->
     <div id="employeeSection">
         <h2>従業員用パスワード変更</h2>
-        <form id="employeePasswordChangeForm">
+        <form id="employeePasswordChangeForm" method="POST" action="{% url 'zyouhouhenkou_view' %}">
+            {% csrf_token %}
             <label for="empid">従業員ID:</label>
             <input type="text" id="empid" name="empid" required><br><br>
 
-            <label for="emppasswd">新しいパスワード:</label>
-            <input type="password" id="emppasswd" name="emppasswd" required><br><br>
+            <label for="emppasswd1">新しいパスワード:</label>
+            <input type="password" id="emppasswd1" name="emppasswd1" required><br><br>
 
-            <label for="emppasswd">パスワード確認:</label>
-            <input type="password" id="emppasswd" name="emppasswd" required><br><br>
+            <label for="emppasswd2">パスワード確認:</label>
+            <input type="password" id="emppasswd2" name="emppasswd2" required><br><br>
 
             <button type="button" onclick="changePassword()">変更</button>
             <p id="employeeErrorMessage" class="error"></p>
         </form>
     </div>
 
-
-
- <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
+    <button onclick="window.location.href='{% url 'uketuke_login' %}'">戻る</button>
 </body>
 </html>
